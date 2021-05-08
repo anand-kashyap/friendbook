@@ -13,7 +13,7 @@ const sortByName = (f1: Friend, f2: Friend) => {
   return comparison;
 };
 
-export default (state: any, action: { type: FriendActionTypes; payload: string }) => {
+export default (state: any, action: { type: FriendActionTypes; payload: any }) => {
   const { type, payload } = action;
 
   const tState = state as Friend[];
@@ -29,28 +29,32 @@ export default (state: any, action: { type: FriendActionTypes; payload: string }
       return nState;
     }
 
-    case FriendActionTypes.DELETE_FRIEND:
+    case FriendActionTypes.DELETE_FRIEND: {
       return tState.filter(({ name }) => name !== payload);
+    }
 
-    case FriendActionTypes.FIND_FRIEND:
+    case FriendActionTypes.FIND_FRIEND: {
       return tState.find(({ name }) => name === payload);
+    }
 
-    case FriendActionTypes.TOGGLE_FAVOURITE:
-      const index = +payload;
-      const nState = [...tState] as Friend[];
-      nState[index].isFavourite = !nState[index].isFavourite;
+    case FriendActionTypes.TOGGLE_FAVOURITE: {
+      const { index, setFav } = payload,
+        nState = [...state] as Friend[];
+      nState[index].isFavourite = setFav;
 
-      const nonFavourites: Friend[] = [];
-      const favourites = nState.filter(f => {
-        if (!f.isFavourite) {
-          nonFavourites.push(f);
-        }
-        return f.isFavourite;
-      });
+      const nonFavourites: Friend[] = [],
+        favourites = nState.filter(f => {
+          if (!f.isFavourite) {
+            nonFavourites.push(f);
+          }
+          return f.isFavourite;
+        });
 
       return favourites.sort(sortByName).concat(nonFavourites.sort(sortByName));
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 };

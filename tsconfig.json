@@ -10,6 +10,17 @@
       "vite/client"
     ],
     "baseUrl": ".",
+    "paths": {
+      "@icons/*": [
+        "src/assets/icons/*"
+      ],
+      "@comps/*": [
+        "src/components/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ]
+    },
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,

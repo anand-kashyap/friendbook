@@ -1,7 +1,8 @@
+import Card, { CardHeader } from '@comps/Card';
+import FriendList from '@comps/Friend/FriendList';
+import ImgButton from '@comps/ImgButton';
+import SearchIcon from '@icons/search.svg';
 import React from 'react';
-import SearchIcon from '../assets/icons/search.svg';
-import Card, { CardHeader } from '../components/Card';
-import FriendList from '../components/Friend/FriendList';
 
 const Home = () => {
   return (
@@ -9,15 +10,14 @@ const Home = () => {
       <Card hasHeader>
         <CardHeader>
           <h1>Friends List</h1>
-          <button>
-            <img src={SearchIcon} alt="search-icon" className="h-5 w-5" />
-          </button>
+          <ImgButton imgPath={SearchIcon} alt="search-icon" />
         </CardHeader>
         <div className="text-sm">
           <input
             type="text"
             className="w-full outline-none py-2 h-12 px-6 border-b-2 border-gray-300"
             placeholder="Enter your friend's name"
+            // onKeyUp={() => }
           />
           <FriendList />
         </div>

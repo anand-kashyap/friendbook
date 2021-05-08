@@ -10,7 +10,7 @@ type FriendContextType = {
   addFriend: FriendActionFunc;
   deleteFriend: FriendActionFunc;
   findFriend: FriendActionFunc;
-  toggleFavourite: (index: number) => void;
+  toggleFavourite: (index: number, setFav: boolean) => void;
 };
 
 enum FriendActionTypes {

@@ -8,8 +8,6 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     { name: 'Rahul Gupta', isFavourite: true },
     { name: 'Shivangi Sharma', isFavourite: false },
     { name: 'Akash Singh', isFavourite: false },
-    { name: 'Akash Singh', isFavourite: false },
-    { name: 'Akash Singh', isFavourite: false },
   ]);
 
   const addFriend = (friendName: string) => {
@@ -24,8 +22,8 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     dispatch({ type: FriendActionTypes.FIND_FRIEND, payload: friendName });
   };
 
-  const toggleFavourite = (index: number) => {
-    dispatch({ type: FriendActionTypes.TOGGLE_FAVOURITE, payload: index + '' });
+  const toggleFavourite = (index: number, setFav: boolean) => {
+    dispatch({ type: FriendActionTypes.TOGGLE_FAVOURITE, payload: { index, setFav } });
   };
 
   return (
