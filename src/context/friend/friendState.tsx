@@ -8,6 +8,8 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     { name: 'Rahul Gupta', isFavourite: true },
     { name: 'Shivangi Sharma', isFavourite: false },
     { name: 'Akash Singh', isFavourite: false },
+    { name: 'Akash Singh', isFavourite: false },
+    { name: 'Akash Singh', isFavourite: false },
   ]);
 
   const addFriend = (friendName: string) => {

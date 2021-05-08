@@ -1,20 +1,29 @@
-import React, { useContext, useEffect } from 'react';
-import friendContext from '../context/friend/friendContext';
+import React from 'react';
+import SearchIcon from '../assets/icons/search.svg';
+import Card, { CardHeader } from '../components/Card';
+import FriendList from '../components/Friend/FriendList';
 
-function Home() {
-  const { friends, addFriend } = useContext(friendContext);
-
-  useEffect(() => {
-    console.log({ friends });
-  }, [friends]);
-
+const Home = () => {
   return (
-    <div className="h-screen p-12 bg-gray-400 font-sans tracking-wider">
-      <div className="flex items-center">
-        <div className="p-6 font-bold bg-white text-lg rounded-2xl min-w-[280px] max-w-160 shadow-xl">Works!!</div>
-      </div>
-    </div>
+    <main className="grid h-full place-content-center bg-red-100 font-sans tracking-wide">
+      <Card hasHeader>
+        <CardHeader>
+          <h1>Friends List</h1>
+          <button>
+            <img src={SearchIcon} alt="search-icon" className="h-5 w-5" />
+          </button>
+        </CardHeader>
+        <div className="text-sm">
+          <input
+            type="text"
+            className="w-full outline-none py-2 h-12 px-6 border-b-2 border-gray-300"
+            placeholder="Enter your friend's name"
+          />
+          <FriendList />
+        </div>
+      </Card>
+    </main>
   );
-}
+};
 
 export default Home;
