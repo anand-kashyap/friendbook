@@ -5,18 +5,12 @@ import ImgButton from '../ImgButton';
 import Friend from './Friend';
 
 function FriendList() {
-  const { friends, toggleFavourite } = useContext(friendContext);
+  const { friends } = useContext(friendContext);
 
   return (
     <React.Fragment>
       {friends.map((friend, i) => (
-        <Friend
-          friend={friend}
-          toggleFavourite={() => toggleFavourite(i, !friend.isFavourite)}
-          isLast={i === friends.length - 1}
-          index={i}
-          key={i}
-        />
+        <Friend friend={friend} isLast={i === friends.length - 1} index={i} key={i} />
       ))}
       {friends.length > 4 && (
         <div>

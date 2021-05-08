@@ -5,9 +5,9 @@ type ImgButtonProps = {
   alt: string;
 };
 
-const ImgButton = ({ imgPath, alt }: ImgButtonProps & ButtonHTMLAttributes<any>) => {
+const ImgButton = ({ imgPath, alt, onClick }: ImgButtonProps & ButtonHTMLAttributes<any>) => {
   return (
-    <button className="h-6 w-6">
+    <button onClick={onClick} className="h-6 w-6">
       <img src={imgPath} alt={alt} />
     </button>
   );

@@ -8,7 +8,7 @@ type FriendActionFunc = (friendName: string) => void;
 type FriendContextType = {
   friends: Friend[];
   addFriend: FriendActionFunc;
-  deleteFriend: FriendActionFunc;
+  deleteFriend: (index: number) => void;
   findFriend: FriendActionFunc;
   toggleFavourite: (index: number, setFav: boolean) => void;
 };

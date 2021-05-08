@@ -30,11 +30,11 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
     }
 
     case FriendActionTypes.DELETE_FRIEND: {
-      return tState.filter(({ name }) => name !== payload);
+      return tState.filter((friend, index) => index !== (payload as number));
     }
 
     case FriendActionTypes.FIND_FRIEND: {
-      return tState.find(({ name }) => name === payload);
+      return tState.filter(({ name }) => name === payload);
     }
 
     case FriendActionTypes.TOGGLE_FAVOURITE: {

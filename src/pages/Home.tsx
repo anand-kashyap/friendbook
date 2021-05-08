@@ -25,8 +25,12 @@ const Home = () => {
             onChange={e => setUserInput(e.target.value)}
             onKeyUp={e => {
               const isEnterKey = e.key === 'Enter',
-                isValidString = userInput.trim().length > 0;
-              isEnterKey && isValidString && addFriend(userInput) && setUserInput('');
+                isValidString = userInput.trim().length > 0,
+                shouldAddFriend = isEnterKey && isValidString;
+              if (shouldAddFriend) {
+                addFriend(userInput);
+                setUserInput('');
+              }
             }}
           />
           <FriendList />

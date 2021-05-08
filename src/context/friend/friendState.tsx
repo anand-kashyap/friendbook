@@ -14,8 +14,8 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     dispatch({ type: FriendActionTypes.ADD_FRIEND, payload: friendName });
   };
 
-  const deleteFriend = (friendName: string) => {
-    dispatch({ type: FriendActionTypes.DELETE_FRIEND, payload: friendName });
+  const deleteFriend = (index: number) => {
+    dispatch({ type: FriendActionTypes.DELETE_FRIEND, payload: index });
   };
 
   const findFriend = (friendName: string) => {
