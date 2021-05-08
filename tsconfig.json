@@ -9,6 +9,7 @@
     "types": [
       "vite/client"
     ],
+    "baseUrl": ".",
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
