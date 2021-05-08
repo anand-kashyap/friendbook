@@ -5,7 +5,7 @@ import ImgButton from '../ImgButton';
 import Friend from './Friend';
 
 function FriendList() {
-  const { friends, addFriend, toggleFavourite } = useContext(friendContext);
+  const { friends, toggleFavourite } = useContext(friendContext);
 
   return (
     <React.Fragment>

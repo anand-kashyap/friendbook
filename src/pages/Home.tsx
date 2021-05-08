@@ -1,10 +1,14 @@
 import Card, { CardHeader } from '@comps/Card';
 import FriendList from '@comps/Friend/FriendList';
 import ImgButton from '@comps/ImgButton';
+import friendContext from '@context/friend/friendContext';
 import SearchIcon from '@icons/search.svg';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 const Home = () => {
+  const { addFriend } = useContext(friendContext);
+  const [userInput, setUserInput] = useState('');
+
   return (
     <main className="grid h-full place-content-center bg-red-100 font-sans tracking-wide">
       <Card hasHeader>
@@ -17,7 +21,13 @@ const Home = () => {
             type="text"
             className="w-full outline-none py-2 h-12 px-6 border-b-2 border-gray-300"
             placeholder="Enter your friend's name"
-            // onKeyUp={() => }
+            value={userInput}
+            onChange={e => setUserInput(e.target.value)}
+            onKeyUp={e => {
+              const isEnterKey = e.key === 'Enter',
+                isValidString = userInput.trim().length > 0;
+              isEnterKey && isValidString && addFriend(userInput) && setUserInput('');
+            }}
           />
           <FriendList />
         </div>
