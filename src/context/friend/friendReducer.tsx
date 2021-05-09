@@ -1,17 +1,5 @@
+import { sortFavonTop } from 'src/utils';
 import { Friend, FriendActionTypes } from './types';
-
-const sortByName = (f1: Friend, f2: Friend) => {
-  const n1 = f1.name.toLowerCase(),
-    n2 = f2.name.toLowerCase();
-
-  let comparison = 0;
-  if (n1 > n2) {
-    comparison = 1;
-  } else if (n1 < n2) {
-    comparison = -1;
-  }
-  return comparison;
-};
 
 export default (state: any, action: { type: FriendActionTypes; payload: any }) => {
   const { type, payload } = action;
@@ -34,10 +22,11 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
     }
 
     case FriendActionTypes.FIND_FRIEND: {
-      return tState.filter(({ name }) => name === payload);
+      const { friendName, friendArr } = payload;
+      return (friendArr as Friend[]).filter(({ name }) => name.toLowerCase().includes(friendName.toLowerCase()));
     }
     case FriendActionTypes.RESET_FIND_FRIEND: {
-      return payload;
+      return sortFavonTop(payload);
     }
 
     case FriendActionTypes.TOGGLE_FAVOURITE: {
@@ -45,15 +34,7 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
         nState = [...state] as Friend[];
       nState[index].isFavourite = setFav;
 
-      const nonFavourites: Friend[] = [],
-        favourites = nState.filter(f => {
-          if (!f.isFavourite) {
-            nonFavourites.push(f);
-          }
-          return f.isFavourite;
-        });
-
-      return favourites.sort(sortByName).concat(nonFavourites.sort(sortByName));
+      return sortFavonTop(nState);
     }
 
     default: {

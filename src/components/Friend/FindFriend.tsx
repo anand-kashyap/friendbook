@@ -21,7 +21,7 @@ const FindFriend = ({ className = '' }) => {
       ref={txtFieldRef}
       onKeyUp={e => {
         const searchTerm = e.currentTarget.value.trim();
-        findFriend(searchTerm);
+        findFriend(searchTerm, allFriends);
       }}
       className={`outline-none py-2 h-9 text-sm px-2 rounded-lg ${className}`}
       placeholder="Search friend by name"

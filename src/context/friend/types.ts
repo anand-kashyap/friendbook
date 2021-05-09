@@ -9,7 +9,7 @@ type FriendContextType = {
   friends: Friend[];
   addFriend: FriendActionFunc;
   deleteFriend: (index: number) => void;
-  findFriend: FriendActionFunc;
+  findFriend: (friendName: string, friendArr: Friend[]) => void;
   resetSearch: (allFriends: Friend[]) => void;
   toggleFavourite: (index: number, setFav: boolean) => void;
 };

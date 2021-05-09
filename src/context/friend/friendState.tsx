@@ -17,8 +17,8 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     dispatch({ type: FriendActionTypes.DELETE_FRIEND, payload: index });
   };
 
-  const findFriend = (friendName: string) => {
-    dispatch({ type: FriendActionTypes.FIND_FRIEND, payload: friendName });
+  const findFriend = (friendName: string, friendArr: Friend[]) => {
+    dispatch({ type: FriendActionTypes.FIND_FRIEND, payload: { friendName, friendArr } });
   };
 
   const toggleFavourite = (index: number, setFav: boolean) => {
