@@ -19,7 +19,7 @@ const Friend = ({ friend, index, isLast = false }: FriendProps) => {
         <p className="font-light text-xs tracking-wider">is your friend</p>
       </div>
       <div className="flex gap-3">
-        <button className="h-6 w-6" onClick={() => toggleFavourite(index, !isFavourite)}>
+        <button className="h-6 w-6 focus:outline-none" onClick={() => toggleFavourite(index, !isFavourite)}>
           {isFavourite ? <GoldStarComp /> : <StarComp />}
         </button>
         <ImgButton onClick={() => deleteFriend(index)} imgPath={DelIcon} alt="delete-icon" />
