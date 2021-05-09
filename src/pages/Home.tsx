@@ -27,7 +27,7 @@ const Home = () => {
                 className="h-9 w-8 bg-white p-2 rounded-l-lg border-r border-gray-300"
                 onClick={() => setSearching(false)}
               />
-              <FindFriend className="flex-grow rounded-l-none" />
+              <FindFriend className="flex-grow rounded-l-none" onEscape={() => setSearching(false)} />
             </>
           )}
         </CardHeader>

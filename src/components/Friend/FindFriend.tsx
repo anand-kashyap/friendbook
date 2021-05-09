@@ -1,7 +1,12 @@
 import friendContext from '@context/friend/friendContext';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
-const FindFriend = ({ className = '' }) => {
+type FindFriendProps = {
+  className?: string;
+  onEscape?: () => any;
+};
+
+const FindFriend = ({ className = '', onEscape }: FindFriendProps) => {
   const txtFieldRef = useRef<HTMLInputElement>(null);
   const { findFriend, resetSearch, friends } = useContext(friendContext);
   const [allFriends, setAllFriends] = useState(friends);
@@ -20,6 +25,9 @@ const FindFriend = ({ className = '' }) => {
       type="text"
       ref={txtFieldRef}
       onKeyUp={e => {
+        if (e.key === 'Escape' && onEscape) {
+          return onEscape();
+        }
         const searchTerm = e.currentTarget.value.trim();
         findFriend(searchTerm, allFriends);
       }}
