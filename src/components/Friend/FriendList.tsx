@@ -26,11 +26,15 @@ function FriendList() {
   return (
     <Fragment>
       {currentPageFriends.map((friend, i) => (
-        <Friend friend={friend} index={i + limit * (currentPage - 1)} key={i} />
+        <Friend
+          friend={friend}
+          isLast={i + 1 === currentPageFriends.length}
+          index={i + limit * (currentPage - 1)}
+          key={i}
+        />
       ))}
-      {friends.length > limit && (
-        <Pagination totalItems={friends.length} setPage={setCurrentPage} currentPage={currentPage} />
-      )}
+      <Pagination totalItems={friends.length} limit={limit} setPage={setCurrentPage} currentPage={currentPage} />
+      {currentPageFriends.length < 1 && <p className="px-6 py-3 "> No friends to show. </p>}
     </Fragment>
   );
 }

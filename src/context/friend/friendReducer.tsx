@@ -36,6 +36,9 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
     case FriendActionTypes.FIND_FRIEND: {
       return tState.filter(({ name }) => name === payload);
     }
+    case FriendActionTypes.RESET_FIND_FRIEND: {
+      return payload;
+    }
 
     case FriendActionTypes.TOGGLE_FAVOURITE: {
       const { index, setFav } = payload,
