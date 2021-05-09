@@ -1,7 +1,5 @@
 import Card, { CardHeader } from '@comps/Card';
-import AddFriend from '@comps/Friend/AddFriend';
-import FindFriend from '@comps/Friend/FindFriend';
-import FriendList from '@comps/Friend/FriendList';
+import { AddFriend, FindFriend, FriendList } from '@comps/Friend';
 import ImgButton from '@comps/ImgButton';
 import { LeftAltIcon, SearchIcon } from '@icons/index';
 import React, { useState } from 'react';

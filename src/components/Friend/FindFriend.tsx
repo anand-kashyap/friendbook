@@ -7,9 +7,10 @@ type FindFriendProps = {
 };
 
 const FindFriend = ({ className = '', onEscape }: FindFriendProps) => {
+  const { findFriend, resetSearch, friends } = useContext(friendContext),
+    [allFriends, setAllFriends] = useState(friends);
+
   const txtFieldRef = useRef<HTMLInputElement>(null);
-  const { findFriend, resetSearch, friends } = useContext(friendContext);
-  const [allFriends, setAllFriends] = useState(friends);
 
   useEffect(() => {
     setAllFriends(friends);

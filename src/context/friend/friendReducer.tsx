@@ -1,4 +1,4 @@
-import { sortFavonTop } from 'src/utils';
+import { sortFavsOnTop } from 'src/utils';
 import { Friend, FriendActionTypes } from './types';
 
 export default (state: any, action: { type: FriendActionTypes; payload: any }) => {
@@ -26,7 +26,7 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
       return (friendArr as Friend[]).filter(({ name }) => name.toLowerCase().includes(friendName.toLowerCase()));
     }
     case FriendActionTypes.RESET_FIND_FRIEND: {
-      return sortFavonTop(payload);
+      return sortFavsOnTop(payload);
     }
 
     case FriendActionTypes.TOGGLE_FAVOURITE: {
@@ -34,7 +34,7 @@ export default (state: any, action: { type: FriendActionTypes; payload: any }) =
         nState = [...state] as Friend[];
       nState[index].isFavourite = setFav;
 
-      return sortFavonTop(nState);
+      return sortFavsOnTop(nState);
     }
 
     default: {

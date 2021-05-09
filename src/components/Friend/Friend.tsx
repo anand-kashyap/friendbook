@@ -9,8 +9,8 @@ import ImgButton from '../ImgButton';
 type FriendProps = { friend: IFriend; isLast?: boolean; index: number };
 
 const Friend = ({ friend, index, isLast = false }: FriendProps) => {
-  const { toggleFavourite, deleteFriend } = useContext(friendContext);
-  const { isFavourite, name } = friend;
+  const { isFavourite, name } = friend,
+    { toggleFavourite, deleteFriend } = useContext(friendContext);
 
   return (
     <div className={`flex justify-between px-6 py-3 border-b-2 ${isLast ? 'border-transparent' : 'border-gray-300'}`}>

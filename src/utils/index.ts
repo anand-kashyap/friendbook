@@ -13,7 +13,7 @@ const sortByName = (f1: Friend, f2: Friend) => {
   return comparison;
 };
 
-const sortFavonTop = (friendArr: Friend[]) => {
+const sortFavsOnTop = (friendArr: Friend[]) => {
   const nonFavourites: Friend[] = [],
     favourites = friendArr.filter(f => {
       if (!f.isFavourite) {
@@ -25,4 +25,4 @@ const sortFavonTop = (friendArr: Friend[]) => {
   return favourites.sort(sortByName).concat(nonFavourites.sort(sortByName));
 };
 
-export { sortFavonTop };
+export { sortFavsOnTop };

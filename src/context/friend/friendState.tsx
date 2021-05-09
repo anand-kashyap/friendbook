@@ -9,24 +9,27 @@ const FriendProvider = (props: React.PropsWithChildren<any>) => {
     { name: 'Shivangi Sharma', isFavourite: false },
     { name: 'Akash Singh', isFavourite: false },
   ]);
+
+  const { ADD_FRIEND, DELETE_FRIEND, FIND_FRIEND, TOGGLE_FAVOURITE, RESET_FIND_FRIEND } = FriendActionTypes;
+
   const addFriend = (friendName: string) => {
-    dispatch({ type: FriendActionTypes.ADD_FRIEND, payload: friendName });
+    dispatch({ type: ADD_FRIEND, payload: friendName });
   };
 
   const deleteFriend = (index: number) => {
-    dispatch({ type: FriendActionTypes.DELETE_FRIEND, payload: index });
+    dispatch({ type: DELETE_FRIEND, payload: index });
   };
 
   const findFriend = (friendName: string, friendArr: Friend[]) => {
-    dispatch({ type: FriendActionTypes.FIND_FRIEND, payload: { friendName, friendArr } });
+    dispatch({ type: FIND_FRIEND, payload: { friendName, friendArr } });
   };
 
   const toggleFavourite = (index: number, setFav: boolean) => {
-    dispatch({ type: FriendActionTypes.TOGGLE_FAVOURITE, payload: { index, setFav } });
+    dispatch({ type: TOGGLE_FAVOURITE, payload: { index, setFav } });
   };
 
   const resetSearch = (allFriends: Friend[]) => {
-    dispatch({ type: FriendActionTypes.RESET_FIND_FRIEND, payload: allFriends });
+    dispatch({ type: RESET_FIND_FRIEND, payload: allFriends });
   };
 
   return (
